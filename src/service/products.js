@@ -1,11 +1,9 @@
-const API_URL = "http://localhost:3000/products";
-
 export default class ProductsService {
   static async fetchProducts(keyword) {
-    let url = API_URL;
+    let url = `${process.env.VUE_APP_API_URL}/products`;
 
     if (keyword) {
-      url = `${API_URL}?keyword=${keyword}`;
+      url += `?keyword=${keyword}`;
     }
 
     const response = await fetch(url);

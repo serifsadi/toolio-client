@@ -16,15 +16,7 @@
         <SearchBar placeholder="Try Awesome" @onSearch="search"></SearchBar>
       </v-row>
       <v-row>
-        <v-container width="100vw">
-          <v-data-table
-            :headers="headers"
-            :items="products"
-            :loading="inProgress"
-            loading-text="Loading products..."
-            no-data-text=""
-          ></v-data-table>
-        </v-container>
+        <DataTable :products="products" :inProgress="inProgress"></DataTable>
       </v-row>
     </v-container>
     <v-snackbar
@@ -41,19 +33,17 @@
 </template>
 
 <script>
+import DataTable from "@/components/DataTable.vue";
 import SearchBar from "@/components/SearchBar.vue";
 import ProductService from "@/service/products.js";
 
 export default {
   name: "Home",
   components: {
+    DataTable,
     SearchBar
   },
   data: () => ({
-    headers: [
-      { text: "ID", value: "id" },
-      { text: "Title", value: "title" }
-    ],
     products: [],
     inProgress: false,
     snackbar: false,

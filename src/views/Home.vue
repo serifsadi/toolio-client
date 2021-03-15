@@ -54,6 +54,7 @@ export default {
       this.fetchProducts(keyword);
     },
     async fetchProducts(keyword) {
+      this.products = [];
       this.inProgress = true;
       this.snackbar = false;
       try {
